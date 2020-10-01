@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class Node<T>
+    public class Node
     {
-        public Node(T data)
+        public Node(string data)
         {
             Data = data;
         }
-        public T Data { get; set; }
-        public Node<T> Next { get; set; }
+        public string Data { get; set; }
+        public Node Next { get; set; }
     }
 }
