@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class OneWayList<T> : IEnumerable<T>
+    public class cOneWayList : IEnumerable
     {
-        Node<T> head;
-        Node<T> tail;
+        Node head;
+        Node tail;
         int count;
 
-        public void Add(T data)
+        public void Add(string data)
         {
-            Node<T> node = new Node<T>(data);
+            Node node = new Node(data);
 
             if (head == null)
                 head = node;
@@ -27,10 +27,10 @@ namespace ClassLibrary
             count++;
         }
 
-        public bool Remove(T data)
+        public bool Remove(string data)
         {
-            Node<T> current = head;
-            Node<T> previous = null;
+            Node current = head;
+            Node previous = null;
 
             while (current != null)
             {
@@ -65,13 +65,12 @@ namespace ClassLibrary
             return false;
         }
 
-        public static void Except(ref OneWayList<T> list, OneWayList<T> exceptList)
+        public static void Except(ref cOneWayList list, cOneWayList exceptList)
         {
-            ArrayList resultList = new ArrayList();
-            foreach (var item in list)
+            foreach (string item in list)
             {
 
-                foreach (var exceptItem in exceptList)
+                foreach (string exceptItem in exceptList)
                 {
                     if (item.Equals(exceptItem))
                     {
@@ -87,14 +86,11 @@ namespace ClassLibrary
 
 
 
+       
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable)this).GetEnumerator();
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            Node<T> current = head;
+            Node current = head;
             while (current != null)
             {
                 yield return current.Data;
